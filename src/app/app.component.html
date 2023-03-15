@@ -1,0 +1,119 @@
+<div class="container main-container">
+  <div class="row ">
+    <div class="col-6 main-div">
+      
+      <div class="list-group" id="list_item">
+       
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="row" >
+                <div class="col-8">
+                  <h4 style="color: #bdbb33">Upcomming Activities</h4>
+                </div>
+                <div class="col-4 text-center">
+                  <button type="button" class="add-btn" (click)="openAddModel()">
+                    <mat-icon>add</mat-icon>
+                  </button>
+             
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item" *ngFor="let list of listArr">
+              <div class="row">
+                <div class="col-8">
+                  <p class="name-text">{{list.fullname}}</p>
+                  <p class="date-text">{{list.dateVal}} &nbsp; &nbsp;|&nbsp; &nbsp; {{list.nickname}}</p> 
+                </div>
+                <div class="col-4 text-center">
+                  <button type="button" class="right-btn" *ngIf="list.isbtnShow">
+                    <mat-icon>check_circle</mat-icon>
+                  </button>
+                  <button type="button" class="menu-btn"  (click)="getConfirm(list)">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                </div>
+              </div>
+              
+             
+            </li>
+            
+          </ul>
+             
+        
+        
+      
+      </div>
+    </div>
+    </div>
+</div>
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header head-model" >
+      <h5 class="modal-title" id="staticBackdropLabel">Book Visit</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form>
+      <div class="modal-body">
+        <div class="row ">
+          <div class="col-12">
+            <form #templateDrivenForm="ngForm" (ngSubmit)="handleFormSubmit(templateDrivenForm)">
+              <div class="form-group">
+           <label>Date of Birth</label>
+           <input type="date" id="dateData" name="dateVal" class="form-control" ngModel required />
+              </div>
+              <div class="form-group">
+                <label>Full Name</label>
+           <input type="text"   id="fullName" name="fullname" class="form-control"  placeholder="Full Name" ngModel required />
+              </div>
+              <div class="form-group">
+                <label>Nick Name</label>
+                <input type="text" id="nickName" name="nickname"  class="form-control"  placeholder="Nick Name" ngModel required />
+              </div>
+              <div class="form-group">
+          <div style="display: flex; margin-top: 10px; float: right;">
+             <button
+             type="submit"
+            class="btn btn-light "
+             style="margin-left: auto; width: 30%;"
+             [disabled]="templateDrivenForm.invalid" style="background-color: #bdbb33;">
+                   Submit
+             </button>
+             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+           </div>
+             </div>
+          </form></div>
+        </div>
+      </div>
+
+    </form>
+  
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- Second Modal -->
+<div class="modal fade" id="secondExampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item get-info" (click)="getInfo('done')">Mark as Done</li>
+          <li class="list-group-item get-info"  (click)="getInfo('delete')">Delete</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
